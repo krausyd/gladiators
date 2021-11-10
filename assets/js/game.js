@@ -120,9 +120,18 @@ var fight = function(enemy) {
         var promptFight = fightOrSkip();
         // if player choses to fight, then fight
         if (promptFight && promptFight.trim().toLowerCase() === "fight") {
-            // generate random damage value based on player's attack power
-            if (playerTurn(enemy)) {
-                enemyTurn(enemy);
+            if (Math.random() > 0.5) {
+                alert(playerInfo.name + " attacks first!");
+                // generate random damage value based on player's attack power
+                if (playerTurn(enemy)) {
+                    enemyTurn(enemy);
+                }
+            }else {
+                alert(enemy.name + " attacks first!");
+                // generate random damage value based on player's attack power
+                if (enemyTurn(enemy)) {
+                    playerTurn(enemy);
+                }
             }
         } else if (promptFight && promptFight.trim().toLowerCase() === "skip") {
             break;
